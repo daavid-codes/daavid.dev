@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dávid Tóth | Software Engineering Student & Developer</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Matrix Background -->
+    <canvas id="matrix-bg"></canvas>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <a href="#" class="logo">daavid.dev</a>
+        <div class="nav-links">
+            <a href="#home"><span>00.</span> Home</a>
+            <a href="#about"><span>01.</span> About</a>
+            <a href="#studies"><span>02.</span> Studies</a>
+            <a href="#skills"><span>03.</span> Skills</a>
+            <a href="#projects"><span>04.</span> Projects</a>
+            <a href="#contact"><span>05.</span> Contact</a>
+        </div>
+        <button class="menu-btn">
+            <i class="fas fa-bars"></i>
+        </button>
+    </nav>
+
+    <!-- Home Section -->
+    <section id="home">
+        <div class="home-content fade-in">
+            <div class="typing-text" id="typing-text">
+                Hello, my name is
+            </div>
+            <h1>Dávid Tóth</h1>
+            <h2>Software Engineering Student & Software Developer</h2>
+            <p>I'm a passionate developer specializing in backend systems and cloud solutions. Currently pursuing my degree while building innovative projects that solve real-world problems.</p>
+            <a href="#about" class="btn">View CV</a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <h2 class="section-title"><span>01.</span> About Me</h2>
+        <div class="about-container">
+            <div class="about-text fade-in">
+                <p>Hello! I'm Dávid, a <b class="important">Computer Science student</b> based in Budapest, Hungary. My journey in technology began in primary school when I discovered my passion for programming in an IT course.</p>
+                <p>Currently, I'm expanding my knowledge at <b class="important">Eötvös Loránd University</b>, where I'm focusing on Software Engineering fundamentals, algorithms, and software engineering principles.</p>
+                <p>What excites me most about technology is the ability to create solutions that make a difference. I'm particularly interested in <b class="important">backend development</b>, <b class="important">cloud computing</b>, and <b class="important">system architecture</b>.</p>
+                <p>When I'm not coding, you can find me hiking in the woods, hanging out with my friends, or behind the turntables as a DJ.</p>
+            </div>
+            <div class="terminal fade-in">
+                <div class="terminal-header">
+                    <div class="terminal-btn red"></div>
+                    <div class="terminal-btn yellow"></div>
+                    <div class="terminal-btn green"></div>
+                </div>
+                <div class="terminal-body">
+                    <div class="terminal-line">
+                        <span class="terminal-prompt">$</span> whoami
+                    </div>
+                    <div class="terminal-line">
+                        Dávid Tóth - Student & Developer
+                    </div>
+                    <div class="terminal-line">
+                        <span class="terminal-prompt">$</span> cat bio.txt
+                    </div>
+                    <div class="terminal-line">
+                        Born: 2006.02.18
+                    </div>
+                    <div class="terminal-line">
+                        Location: Budapest, Hungary
+                    </div>
+                    <div class="terminal-line">
+                        Education: Student at ELTE - BSc in Software Engineering
+                    </div>
+                    <div class="terminal-line">
+                        <span class="terminal-prompt">$</span> <span class="terminal-cursor"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Studies Section -->
+    <section id="studies">
+        <h2 class="section-title"><span>02.</span> Education</h2>
+        <div class="timeline">
+            <div class="timeline-item left fade-in">
+                <div class="timeline-content">
+                    <div class="timeline-date">2024 - Present</div>
+                    <h3 class="timeline-title">Eötvös Loránd University</h3>
+                    <p class="timeline-desc">Bachelor of Science in Software Engineering. Focus on algorithms, data structures, software engineering, and computer systems.</p>
+                </div>
+            </div>
+            <div class="timeline-item right fade-in">
+                <div class="timeline-content">
+                    <div class="timeline-date">2020 - 2024</div>
+                    <h3 class="timeline-title">Kaposvári Táncsics Mihály Gimnázium</h3>
+                    <p class="timeline-desc">Informatics Major Program. Developed foundational programming skills in Java and Python while studying advanced mathematics and computer science concepts.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills">
+        <h2 class="section-title"><span>03.</span> Skills</h2>
+
+        <div class="skills-container">
+                <!-- Version Control -->
+                <div class="skill-card fade-in">
+                    <i class="fab fa-github skill-icon"></i>
+                    <h3 class="skill-name">Version Control</h3>
+                    <p class="skill-desc">Git, GitHub workflows, branching strategies</p>
+                </div>
+
+                <!-- Programming Languages -->
+                <div class="skill-card fade-in">
+                    <i class="fas fa-code skill-icon"></i>
+                    <h3 class="skill-name">Java</h3>
+                    <p class="skill-desc">OOP, Spring Framework, JVM ecosystem</p>
+                </div>
+
+                <div class="skill-card fade-in">
+                    <i class="fas fa-code skill-icon"></i>
+                    <h3 class="skill-name">C/C++</h3>
+                    <p class="skill-desc">System programming, memory management</p>
+                </div>
+
+                <div class="skill-card fade-in">
+                    <i class="fas fa-code skill-icon"></i>
+                    <h3 class="skill-name">C#</h3>
+                    <p class="skill-desc">.NET ecosystem, ASP.NET Core</p>
+                </div>
+
+                <div class="skill-card fade-in">
+                    <i class="fab fa-python skill-icon"></i>
+                    <h3 class="skill-name">Python</h3>
+                    <p class="skill-desc">Scripting, Flask, data analysis</p>
+                </div>
+
+                <div class="skill-card fade-in">
+                    <i class="fas fa-code skill-icon"></i>
+                    <h3 class="skill-name">Haskell</h3>
+                    <p class="skill-desc">Functional programming concepts</p>
+                </div>
+
+                <!-- Web Development -->
+                <div class="skill-card fade-in">
+                    <i class="fab fa-html5 skill-icon"></i>
+                    <h3 class="skill-name">HTML/CSS</h3>
+                    <p class="skill-desc">Semantic markup, responsive design</p>
+                </div>
+
+                <div class="skill-card fade-in">
+                    <i class="fab fa-js skill-icon"></i>
+                    <h3 class="skill-name">JavaScript</h3>
+                    <p class="skill-desc">ES6+, DOM manipulation, async programming</p>
+                </div>
+
+                <div class="skill-card fade-in">
+                    <i class="fas fa-code skill-icon"></i>
+                    <h3 class="skill-name">Bootstrap</h3>
+                    <p class="skill-desc">Rapid UI development, responsive grids</p>
+                </div>
+
+                <div class="skill-card fade-in">
+                    <i class="fab fa-node-js skill-icon"></i>
+                    <h3 class="skill-name">Node.js</h3>
+                    <p class="skill-desc">Backend development, Express.js</p>
+                </div>
+
+                <div class="skill-card fade-in">
+                    <i class="fas fa-network-wired skill-icon"></i>
+                    <h3 class="skill-name">REST APIs</h3>
+                    <p class="skill-desc">API design, HTTP protocols</p>
+                </div>
+
+                <!-- Databases -->
+                <div class="skill-card fade-in">
+                    <i class="fas fa-database skill-icon"></i>
+                    <h3 class="skill-name">SQL</h3>
+                    <p class="skill-desc">Relational databases, query optimization</p>
+                </div>
+
+                <div class="skill-card fade-in">
+                    <i class="fas fa-database skill-icon"></i>
+                    <h3 class="skill-name">MongoDB</h3>
+                    <p class="skill-desc">NoSQL, document storage, aggregation</p>
+                </div>
+
+                <!-- DevOps -->
+                <div class="skill-card fade-in">
+                    <i class="fab fa-windows skill-icon"></i>
+                    <h3 class="skill-name">PowerShell</h3>
+                    <p class="skill-desc">Windows automation, scripting</p>
+                </div>
+
+                <div class="skill-card fade-in">
+                    <i class="fas fa-terminal skill-icon"></i>
+                    <h3 class="skill-name">Bash</h3>
+                    <p class="skill-desc">Linux shell scripting, automation</p>
+                </div>
+
+                <div class="skill-card fade-in">
+                    <i class="fas fa-server skill-icon"></i>
+                    <h3 class="skill-name">DigitalOcean</h3>
+                    <p class="skill-desc">Cloud infrastructure, droplets</p>
+                </div>
+
+                <div class="skill-card fade-in">
+                    <i class="fas fa-server skill-icon"></i>
+                    <h3 class="skill-name">Apache/Nginx</h3>
+                    <p class="skill-desc">Web server configuration</p>
+                </div>
+
+                <div class="skill-card fade-in">
+                    <i class="fab fa-docker skill-icon"></i>
+                    <h3 class="skill-name">Docker</h3>
+                    <p class="skill-desc">Containerization, deployment</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+        <h2 class="section-title"><span>04.</span> Projects</h2>
+        <div class="projects-container">
+            <div class="project-card fade-in">
+                <div class="project-img">
+                    <i class="fas fa-image"></i>
+                </div>
+                <div class="project-content">
+                    <h3 class="project-title">ClouD - Gallery</h3>
+                    <p class="project-desc">ClouD is a modern, standards-compliant web application designed for managing, browsing, and organizing your personal photo collection. Built with a responsive Bootstrap UI and a robust RESTful backend, ClouD showcases expertise in REST API integration, responsive design, and accessibility compliance.</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">JavaScript</span>
+                        <span class="tech-tag">Bootstrap</span>
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">REST</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+                        <a href="https://github.com/daavid-codes/Gallery" class="project-link"><i class="fab fa-github"></i> Source</a>
+                    </div>
+                </div>
+            </div>
+
+           
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <h2 class="section-title"><span>05.</span> Contact</h2>
+        <div class="contact-container">
+            <div class="contact-info fade-in">
+                <div class="contact-item">
+                    <i class="fas fa-envelope contact-icon"></i>
+                    <div class="contact-text">
+                        <a href="mailto:david@daavid.dev">david@daavid.dev</a>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-phone contact-icon"></i>
+                    <div class="contact-text">
+                        <a href="tel:+36706084996">+36 70 608 4996</a>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <i class="fab fa-github contact-icon"></i>
+                    <div class="contact-text">
+                        <a href="https://github.com/daavid-codes" target="_blank">github.com/daavid-codes</a>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <i class="fab fa-linkedin contact-icon"></i>
+                    <div class="contact-text">
+                        <a href="https://linkedin.com/in/tothdavid1/" target="_blank">linkedin.com/in/tothdavid1</a>
+                    </div>
+                </div>
+            </div>
+            <form class="contact-form fade-in">
+                <div class="form-group">
+                    <input type="text" class="form-input" id="name" placeholder=" " required>
+                    <label for="name" class="form-label">Name</label>
+                </div>
+                <div class="form-group">
+                    <input type="email" class="form-input" id="email" placeholder=" " required>
+                    <label for="email" class="form-label">Email</label>
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-input" id="subject" placeholder=" ">
+                    <label for="subject" class="form-label">Subject</label>
+                </div>
+                <div class="form-group">
+                    <textarea class="form-input" id="message" placeholder=" " required></textarea>
+                    <label for="message" class="form-label">Message</label>
+                </div>
+                <button type="submit" class="btn submit-btn">Send Message</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="social-links">
+            <a href="https://github.com/daavid-codes" class="social-link"><i class="fab fa-github"></i></a>
+            <a href="https://www.linkedin.com/in/tothdavid1/" class="social-link"><i class="fab fa-linkedin"></i></a>
+            <a href="mailto:david@daavid.dev" class="social-link"><i class="fa fa-envelope"></i></a>
+            <a href="tel:+36706084996" class="social-link"><i class="fa fa-phone"></i></a>
+        </div>
+        <p class="copyright">Designed & Built by Dávid Tóth © 2025</p>
+        <a href="https://daavid.dev">daavid.dev</a>
+    </footer>
+
+    <!-- Scroll Indicator -->
+    <div class="scroll-indicator">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
+    <script src="index.js"></script>
+</body>
+</html>
