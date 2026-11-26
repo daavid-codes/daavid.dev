@@ -168,7 +168,7 @@
 
         // Contact form: delivered by Web3Forms (https://web3forms.com).
         // The access key is meant to be public; it only lets this form email the inbox it was created for.
-        const WEB3FORMS_ACCESS_KEY = 'YOUR_WEB3FORMS_ACCESS_KEY';
+        const WEB3FORMS_ACCESS_KEY = 'eccdeef6-f886-4d9c-b414-a0e6e0627fec';
         const contactForm = document.getElementById('contact-form');
 
         if (contactForm) {
