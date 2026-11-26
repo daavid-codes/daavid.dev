@@ -159,119 +159,37 @@
     <section id="skills">
         <h2 class="section-title"><span>03.</span> Skills</h2>
 
-        <div class="skills-container">
-                <!-- Version Control -->
-                <div class="skill-card fade-in">
-                    <i class="fab fa-github skill-icon"></i>
-                    <h3 class="skill-name">Version Control</h3>
-                    <p class="skill-desc">Git, GitHub workflows, branching strategies</p>
+        <div class="editor fade-in" id="skills-editor">
+            <div class="terminal-header editor-header">
+                <div class="terminal-btn red"></div>
+                <div class="terminal-btn yellow"></div>
+                <div class="terminal-btn green"></div>
+                <div class="editor-tabs">
+                    <span class="editor-tab active">skills.ts</span>
+                    <span class="editor-tab">studies.log</span>
                 </div>
-
-                <!-- Programming Languages -->
-                <div class="skill-card fade-in">
-                    <i class="fas fa-code skill-icon"></i>
-                    <h3 class="skill-name">Java</h3>
-                    <p class="skill-desc">OOP, Spring Framework, JVM ecosystem</p>
-                </div>
-
-                <div class="skill-card fade-in">
-                    <i class="fas fa-code skill-icon"></i>
-                    <h3 class="skill-name">C/C++</h3>
-                    <p class="skill-desc">System programming, memory management</p>
-                </div>
-
-                <div class="skill-card fade-in">
-                    <i class="fas fa-code skill-icon"></i>
-                    <h3 class="skill-name">C#</h3>
-                    <p class="skill-desc">OOP, .NET ecosystem</p>
-                </div>
-
-                <div class="skill-card fade-in">
-                    <i class="fab fa-python skill-icon"></i>
-                    <h3 class="skill-name">Python</h3>
-                    <p class="skill-desc">Scripting, data analysis</p>
-                </div>
-
-                <div class="skill-card fade-in">
-                    <i class="fas fa-code skill-icon"></i>
-                    <h3 class="skill-name">Haskell</h3>
-                    <p class="skill-desc">Functional programming concepts</p>
-                </div>
-
-                <!-- Web Development -->
-                <div class="skill-card fade-in">
-                    <i class="fab fa-html5 skill-icon"></i>
-                    <h3 class="skill-name">HTML/CSS</h3>
-                    <p class="skill-desc">Semantic markup, responsive design</p>
-                </div>
-
-                <div class="skill-card fade-in">
-                    <i class="fab fa-js skill-icon"></i>
-                    <h3 class="skill-name">JavaScript</h3>
-                    <p class="skill-desc">ES6+, DOM manipulation, async programming</p>
-                </div>
-
-                <div class="skill-card fade-in">
-                    <i class="fas fa-code skill-icon"></i>
-                    <h3 class="skill-name">Bootstrap</h3>
-                    <p class="skill-desc">Rapid UI development, responsive grids</p>
-                </div>
-
-                <div class="skill-card fade-in">
-                    <i class="fab fa-node-js skill-icon"></i>
-                    <h3 class="skill-name">Node.js</h3>
-                    <p class="skill-desc">Backend development, Express.js</p>
-                </div>
-
-                <div class="skill-card fade-in">
-                    <i class="fas fa-network-wired skill-icon"></i>
-                    <h3 class="skill-name">REST APIs</h3>
-                    <p class="skill-desc">API design, HTTP protocols</p>
-                </div>
-
-                <!-- Databases -->
-                <div class="skill-card fade-in">
-                    <i class="fas fa-database skill-icon"></i>
-                    <h3 class="skill-name">SQL</h3>
-                    <p class="skill-desc">Relational databases, query optimization</p>
-                </div>
-
-                <div class="skill-card fade-in">
-                    <i class="fas fa-database skill-icon"></i>
-                    <h3 class="skill-name">MongoDB</h3>
-                    <p class="skill-desc">NoSQL, document storage, aggregation</p>
-                </div>
-
-                <!-- DevOps -->
-                <div class="skill-card fade-in">
-                    <i class="fab fa-windows skill-icon"></i>
-                    <h3 class="skill-name">PowerShell</h3>
-                    <p class="skill-desc">Windows automation, scripting</p>
-                </div>
-
-                <div class="skill-card fade-in">
-                    <i class="fas fa-terminal skill-icon"></i>
-                    <h3 class="skill-name">Bash</h3>
-                    <p class="skill-desc">Linux shell scripting, automation</p>
-                </div>
-
-                <div class="skill-card fade-in">
-                    <i class="fas fa-server skill-icon"></i>
-                    <h3 class="skill-name">DigitalOcean</h3>
-                    <p class="skill-desc">Cloud infrastructure, droplets</p>
-                </div>
-
-                <div class="skill-card fade-in">
-                    <i class="fas fa-server skill-icon"></i>
-                    <h3 class="skill-name">Apache/Nginx</h3>
-                    <p class="skill-desc">Web server configuration</p>
-                </div>
-
-                <div class="skill-card fade-in">
-                    <i class="fab fa-docker skill-icon"></i>
-                    <h3 class="skill-name">Docker</h3>
-                    <p class="skill-desc">Containerization, deployment</p>
-                </div>
+            </div>
+            <div class="editor-body">
+                    <div class="code-line" style="--i: 0"><span class="code-ln">1</span><span class="code-text"><span class="tok-comment">// skills.ts — the tools I build with</span></span></div>
+                    <div class="code-line" style="--i: 1"><span class="code-ln">2</span><span class="code-text"><span class="tok-kw">export const</span> <span class="tok-var">skills</span> = {</span></div>
+                    <div class="code-line" style="--i: 2"><span class="code-ln">3</span><span class="code-text code-kv"><span class="code-key">  <span class="tok-prop">languages</span>: </span><span class="code-value">[<span class="tok-str">"Java"</span>, <span class="tok-str">"C/C++"</span>, <span class="tok-str">"C#"</span>, <span class="tok-str">"Python"</span>, <span class="tok-str">"JavaScript"</span>, <span class="tok-str">"Haskell"</span>],</span></span></div>
+                    <div class="code-line" style="--i: 3"><span class="code-ln">4</span><span class="code-text code-kv"><span class="code-key">  <span class="tok-prop">backend</span>:   </span><span class="code-value">[<span class="tok-str">"Spring"</span>, <span class="tok-str">"Node.js"</span>, <span class="tok-str">"Express"</span>, <span class="tok-str">"REST APIs"</span>],</span></span></div>
+                    <div class="code-line" style="--i: 4"><span class="code-ln">5</span><span class="code-text code-kv"><span class="code-key">  <span class="tok-prop">databases</span>: </span><span class="code-value">[<span class="tok-str">"SQL"</span>, <span class="tok-str">"MongoDB"</span>],</span></span></div>
+                    <div class="code-line" style="--i: 5"><span class="code-ln">6</span><span class="code-text code-kv"><span class="code-key">  <span class="tok-prop">cloud</span>:     </span><span class="code-value">[<span class="tok-str">"Docker"</span>, <span class="tok-str">"DigitalOcean"</span>, <span class="tok-str">"Nginx"</span>, <span class="tok-str">"Apache"</span>],</span></span></div>
+                    <div class="code-line" style="--i: 6"><span class="code-ln">7</span><span class="code-text code-kv"><span class="code-key">  <span class="tok-prop">tooling</span>:   </span><span class="code-value">[<span class="tok-str">"Git"</span>, <span class="tok-str">"GitHub"</span>, <span class="tok-str">"Bash"</span>, <span class="tok-str">"PowerShell"</span>],</span></span></div>
+                    <div class="code-line" style="--i: 7"><span class="code-ln">8</span><span class="code-text code-kv"><span class="code-key">  <span class="tok-prop">frontend</span>:  </span><span class="code-value">[<span class="tok-str">"HTML/CSS"</span>, <span class="tok-str">"Bootstrap"</span>],</span></span></div>
+                    <div class="code-line" style="--i: 8"><span class="code-ln">9</span><span class="code-text">};</span></div>
+                    <div class="code-line" style="--i: 9"><span class="code-ln">10</span><span class="code-text"></span></div>
+                    <div class="code-line" style="--i: 10"><span class="code-ln">11</span><span class="code-text"><span class="tok-kw">export const</span> <span class="tok-var">focus</span> =</span></div>
+                    <div class="code-line" style="--i: 11"><span class="code-ln">12</span><span class="code-text code-kv"><span class="code-key">  </span><span class="code-value">[<span class="tok-str">"backend"</span>, <span class="tok-str">"cloud"</span>, <span class="tok-str">"system architecture"</span>];</span></span></div>
+            </div>
+            <div class="editor-status">
+                <span><i class="fas fa-code-branch"></i> main</span>
+                <span class="editor-status-right">
+                    <span id="editor-cursor">Ln 1, Col 1</span>
+                    <span>UTF-8</span>
+                    <span>TypeScript</span>
+                </span>
             </div>
         </div>
     </section>

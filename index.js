@@ -226,3 +226,29 @@
                 }
             });
         }
+
+        // Skills: "type in" the editor when it scrolls into view, click a line to move the cursor
+        const editor = document.getElementById('skills-editor');
+
+        if (editor) {
+            const cursor = document.getElementById('editor-cursor');
+            const lines = [...editor.querySelectorAll('.code-line')];
+
+            new IntersectionObserver((entries, obs) => {
+                if (entries[0].isIntersecting) {
+                    editor.classList.add('typed');
+                    obs.disconnect();
+                }
+            }, { threshold: 0.25 }).observe(editor);
+
+            lines.forEach((line, i) => {
+                line.addEventListener('click', () => {
+                    lines.forEach(l => l.classList.remove('active'));
+                    line.classList.add('active');
+                    const sel = window.getSelection();
+                    const col = sel && sel.anchorNode && line.contains(sel.anchorNode) ? sel.anchorOffset + 1 : 1;
+                    cursor.textContent = `Ln ${i + 1}, Col ${col}`;
+                });
+            });
+            lines[0].classList.add('active');
+        }
