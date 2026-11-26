@@ -241,6 +241,8 @@
 
         .about-text p {
             margin-bottom: 1.5rem;
+            text-align: justify;
+            hyphens: auto; /* avoids wide gaps between words on narrow screens */
         }
 
 
@@ -1038,6 +1040,11 @@
 
             .term-line {
                 padding-left: 0.75rem;
+            }
+
+            /* justified text leaves big gaps in a narrow phone column */
+            .about-text p {
+                text-align: left;
             }
 
             .code-text {
