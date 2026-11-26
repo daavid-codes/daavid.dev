@@ -316,7 +316,7 @@
 
         .git-graph {
             --lane: 32px;
-            --lanes: 3;
+            --lanes: 4;
             position: relative;
             max-width: 800px;
             width: 100%;
@@ -336,6 +336,11 @@
             fill: none;
             stroke-width: 2;
             stroke-linecap: round;
+        }
+
+        .git-lines .halo {
+            stroke: var(--deep-navy);
+            stroke-width: 8;
         }
 
         .git-lines .open {
@@ -364,6 +369,7 @@
         .commit[data-lane="0"] { --lane-i: 0; --node-color: var(--slate); }
         .commit[data-lane="1"] { --lane-i: 1; }
         .commit[data-lane="2"] { --lane-i: 2; }
+        .commit[data-lane="3"] { --lane-i: 3; }
         .commit[data-merged] { --node-color: var(--light-slate); }
 
         .commit:hover .commit-node {
@@ -812,6 +818,7 @@
             .commit-msg em {
                 display: block;
                 margin-left: 0;
+                white-space: normal;
             }
 
             .navbar {

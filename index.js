@@ -120,9 +120,13 @@
             });
 
             const r = 18;
-            const paths = [];
-            const add = (d, stroke, cls = '') =>
-                paths.push(`<path d="${d}" stroke="${stroke}" class="${cls}"/>`);
+            const lines = [];
+            const forks = [];
+            const path = (d, stroke, cls = '') => `<path d="${d}" stroke="${stroke}" class="${cls}"/>`;
+            const add = (d, stroke, cls) => lines.push(path(d, stroke, cls));
+            // fork curves get a navy halo so they visibly pass over lanes they cross
+            const addFork = (d, stroke) => forks.push(path(d, '', 'halo') + path(d, stroke));
+            const topY = Math.min(...Object.values(pos).map(p => p.y));
 
             commits.forEach(c => {
                 const child = pos[c.dataset.id];
@@ -131,16 +135,18 @@
                     if (p.lane === child.lane) {
                         add(`M${p.x} ${p.y} L${child.x} ${child.y}`, child.color);
                     } else if (child.lane > p.lane) {
-                        // branch off: curve right just above the parent, then go straight up
-                        add(`M${p.x} ${p.y} C${p.x} ${p.y - r} ${child.x} ${p.y - r} ${child.x} ${p.y - 2 * r} L${child.x} ${child.y}`, child.color);
+                        // branch off: from the parent commit, or from the parent's line just below the child
+                        const y = c.dataset.fork === 'below' ? child.y + 4 * r : p.y;
+                        addFork(`M${p.x} ${y} C${p.x} ${y - r} ${child.x} ${y - r} ${child.x} ${y - 2 * r} L${child.x} ${child.y}`, child.color);
                     } else {
                         // merge: go straight up, then curve back into the target lane
                         add(`M${p.x} ${p.y} L${p.x} ${child.y + 2 * r} C${p.x} ${child.y + r} ${child.x} ${child.y + r} ${child.x} ${child.y}`, p.color);
                     }
                 });
-                // branches still in progress continue upward
+                // branches still in progress: solid up to the newest commit, dashed beyond it
                 if (c.hasAttribute('data-open')) {
-                    add(`M${child.x} ${child.y} L${child.x} 0`, child.color, 'open');
+                    add(`M${child.x} ${child.y} L${child.x} ${topY}`, child.color);
+                    add(`M${child.x} ${topY} L${child.x} 0`, child.color, 'open');
                 }
             });
 
@@ -151,6 +157,7 @@
                 add(`M${top.x} ${top.y} L${top.x} 0`, top.color, 'open');
             }
 
+            const paths = [...lines, ...forks];
             svg.innerHTML = paths.join('');
         };
 
