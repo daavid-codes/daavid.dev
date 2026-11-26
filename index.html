@@ -90,30 +90,56 @@
     <!-- Studies Section -->
     <section id="studies">
         <h2 class="section-title"><span>02.</span> Studies</h2>
-        <div class="timeline">
-            <div class="timeline-item right fade-in">
+        <p class="git-cmd fade-in"><span class="terminal-prompt">$</span> git log --graph --all</p>
+        <div class="git-graph" id="git-graph">
+            <svg class="git-lines" aria-hidden="true"></svg>
+
+            <div class="commit fade-in" data-id="internship" data-lane="2" data-parents="elte" data-open>
+                <span class="commit-node"></span>
                 <div class="timeline-content">
+                    <div class="commit-refs">
+                        <span class="ref ref-head">HEAD</span>
+                        <span class="ref">internship/morgan-stanley</span>
+                    </div>
                     <div class="timeline-date">2026 - Present</div>
                     <h3 class="timeline-title">Morgan Stanley Internship</h3>
                     <p class="timeline-desc">Internship in the Java Platform Engineering and Application Infrastructure team, working on integrating AI into company systems.</p>
                 </div>
             </div>
 
-            <div class="timeline-item left fade-in">
+            <div class="commit fade-in" data-id="elte" data-lane="1" data-parents="graduated" data-open>
+                <span class="commit-node"></span>
                 <div class="timeline-content">
+                    <div class="commit-refs">
+                        <span class="ref">elte/software-engineering</span>
+                    </div>
                     <div class="timeline-date">2024 - Present</div>
                     <h3 class="timeline-title">Eötvös Loránd University</h3>
                     <p class="timeline-desc">Bachelor of Science in Software Engineering. Focus on algorithms, data structures, software engineering, and computer systems.</p>
                 </div>
             </div>
-            <div class="timeline-item right fade-in">
+
+            <div class="commit commit-small fade-in" data-id="graduated" data-lane="0" data-parents="init highschool">
+                <span class="commit-node"></span>
+                <p class="commit-msg">Merge branch <span>'high-school'</span> into main <em>2024 · graduated</em></p>
+            </div>
+
+            <div class="commit fade-in" data-id="highschool" data-lane="1" data-parents="init" data-merged>
+                <span class="commit-node"></span>
                 <div class="timeline-content">
+                    <div class="commit-refs">
+                        <span class="ref ref-merged">high-school</span>
+                    </div>
                     <div class="timeline-date">2020 - 2024</div>
                     <h3 class="timeline-title">Kaposvári Táncsics Mihály Gimnázium</h3>
                     <p class="timeline-desc">Informatics Major Program. Developed foundational programming skills in Java and Python while studying advanced mathematics and computer science concepts.</p>
                 </div>
             </div>
-            
+
+            <div class="commit commit-small fade-in" data-id="init" data-lane="0" data-parents="">
+                <span class="commit-node"></span>
+                <p class="commit-msg">Initial commit <em>first IT course in primary school</em></p>
+            </div>
         </div>
     </section>
 

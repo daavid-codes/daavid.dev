@@ -98,3 +98,63 @@
 
         window.addEventListener('scroll', fadeInOnScroll);
         window.addEventListener('load', fadeInOnScroll);
+        // Studies: git branch graph
+        const gitGraph = document.getElementById('git-graph');
+
+        const drawGitGraph = () => {
+            if (!gitGraph) return;
+            const svg = gitGraph.querySelector('.git-lines');
+            const commits = [...gitGraph.querySelectorAll('.commit')];
+            const pos = {};
+            const color = c => getComputedStyle(c).getPropertyValue('--node-color').trim() || '#64ffda';
+
+            commits.forEach(c => {
+                const node = c.querySelector('.commit-node');
+                // offsetTop/offsetLeft ignore the fade-in transform
+                pos[c.dataset.id] = {
+                    x: node.offsetLeft + node.offsetWidth / 2,
+                    y: c.offsetTop + node.offsetTop + node.offsetHeight / 2,
+                    lane: +c.dataset.lane,
+                    color: color(c)
+                };
+            });
+
+            const r = 18;
+            const paths = [];
+            const add = (d, stroke, cls = '') =>
+                paths.push(`<path d="${d}" stroke="${stroke}" class="${cls}"/>`);
+
+            commits.forEach(c => {
+                const child = pos[c.dataset.id];
+                c.dataset.parents.split(' ').filter(Boolean).forEach(pid => {
+                    const p = pos[pid];
+                    if (p.lane === child.lane) {
+                        add(`M${p.x} ${p.y} L${child.x} ${child.y}`, child.color);
+                    } else if (child.lane > p.lane) {
+                        // branch off: curve right just above the parent, then go straight up
+                        add(`M${p.x} ${p.y} C${p.x} ${p.y - r} ${child.x} ${p.y - r} ${child.x} ${p.y - 2 * r} L${child.x} ${child.y}`, child.color);
+                    } else {
+                        // merge: go straight up, then curve back into the target lane
+                        add(`M${p.x} ${p.y} L${p.x} ${child.y + 2 * r} C${p.x} ${child.y + r} ${child.x} ${child.y + r} ${child.x} ${child.y}`, p.color);
+                    }
+                });
+                // branches still in progress continue upward
+                if (c.hasAttribute('data-open')) {
+                    add(`M${child.x} ${child.y} L${child.x} 0`, child.color, 'open');
+                }
+            });
+
+            // main keeps going above the last merge
+            const mains = commits.filter(c => c.dataset.lane === '0');
+            if (mains.length) {
+                const top = pos[mains[0].dataset.id];
+                add(`M${top.x} ${top.y} L${top.x} 0`, top.color, 'open');
+            }
+
+            svg.innerHTML = paths.join('');
+        };
+
+        window.addEventListener('load', drawGitGraph);
+        window.addEventListener('resize', drawGitGraph);
+        if (document.fonts) document.fonts.ready.then(drawGitGraph);
+        drawGitGraph();
