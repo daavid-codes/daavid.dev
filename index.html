@@ -6,6 +6,9 @@
     <title>Dávid Tóth | Software Engineering Student</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+    <link rel="icon" href="favicon-32.png" type="image/png" sizes="32x32">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -51,34 +54,31 @@
                 <p>What excites me most about technology is the ability to create solutions that make a difference. I'm particularly interested in <b class="important">backend development</b>, <b class="important">cloud computing</b>, and <b class="important">system architecture</b>.</p>
                 <p>When I'm not coding, you can find me hiking in the woods, hanging out with my friends, or behind the turntables as a DJ.</p>
             </div>
-            <div class="terminal fade-in">
-                <div class="terminal-header">
+            <div class="editor fade-in">
+                <div class="terminal-header editor-header">
                     <div class="terminal-btn red"></div>
                     <div class="terminal-btn yellow"></div>
                     <div class="terminal-btn green"></div>
+                    <div class="editor-tabs">
+                        <span class="editor-tab active">bash</span>
+                    </div>
                 </div>
-                <div class="terminal-body">
-                    <div class="terminal-line">
-                        <span class="terminal-prompt">$</span> whoami
-                    </div>
-                    <div class="terminal-line">
-                        Dávid Tóth - Student
-                    </div>
-                    <div class="terminal-line">
-                        <span class="terminal-prompt">$</span> cat bio.txt
-                    </div>
-                    <div class="terminal-line">
-                        Born: 2006.02.18
-                    </div>
-                    <div class="terminal-line">
-                        Location: Budapest, Hungary
-                    </div>
-                    <div class="terminal-line">
-                        Education: Student at ELTE - BSc in Software Engineering
-                    </div>
-                    <div class="terminal-line">
-                        <span class="terminal-prompt">$</span> <span class="terminal-cursor"></span>
-                    </div>
+                <div class="editor-body">
+                    <div class="code-line term-line" style="--i: 0"><span class="code-text"><span class="tok-prop">david@daavid.dev</span>:<span class="tok-annot">~</span><span class="term-sym">$</span> whoami</span></div>
+                    <div class="code-line term-line" style="--i: 1"><span class="code-text"><span class="term-out">Dávid Tóth - Software Engineering Student &amp; Intern @ Morgan Stanley</span></span></div>
+                    <div class="code-line term-line" style="--i: 2"><span class="code-text"><span class="tok-prop">david@daavid.dev</span>:<span class="tok-annot">~</span><span class="term-sym">$</span> cat bio.txt</span></div>
+                    <div class="code-line term-line" style="--i: 3"><span class="code-text"><span class="tok-type">Born:</span> <span class="term-out">2006.02.18</span></span></div>
+                    <div class="code-line term-line" style="--i: 4"><span class="code-text"><span class="tok-type">Location:</span> <span class="term-out">Budapest, Hungary</span></span></div>
+                    <div class="code-line term-line" style="--i: 5"><span class="code-text"><span class="tok-type">Education:</span> <span class="term-out">Student at ELTE - BSc in Software Engineering</span></span></div>
+                    <div class="code-line term-line" style="--i: 6"><span class="code-text"><span class="tok-prop">david@daavid.dev</span>:<span class="tok-annot">~</span><span class="term-sym">$</span> <span class="terminal-cursor"></span></span></div>
+                </div>
+                <div class="editor-status">
+                    <span><i class="fas fa-code-branch"></i> main</span>
+                    <span class="editor-status-right">
+                        <span>~/daavid.dev</span>
+                        <span>UTF-8</span>
+                        <span>bash</span>
+                    </span>
                 </div>
             </div>
         </div>
@@ -87,30 +87,68 @@
     <!-- Studies Section -->
     <section id="studies">
         <h2 class="section-title"><span>02.</span> Studies</h2>
-        <div class="timeline">
-            <div class="timeline-item right fade-in">
+        <p class="git-cmd fade-in"><span class="terminal-prompt">$</span> git log --graph --all</p>
+        <div class="git-graph" id="git-graph">
+            <svg class="git-lines" aria-hidden="true"></svg>
+
+            <div class="commit fade-in" data-id="research" data-lane="3" data-parents="elte" data-fork="below" data-open>
+                <span class="commit-node"></span>
                 <div class="timeline-content">
-                    <div class="timeline-date">2026 - Present</div>
+                    <div class="commit-refs">
+                        <span class="ref ref-head">HEAD</span>
+                        <span class="ref">research/medical</span>
+                    </div>
+                    <div class="timeline-date">Sep 2026 - Present</div>
+                    <h3 class="timeline-title">Medical Research Collaboration</h3>
+                    <p class="timeline-desc">Participating in a medical research project in collaboration with Harvard Medical School and Northeastern University.</p>
+                </div>
+            </div>
+
+            <div class="commit fade-in" data-id="internship" data-lane="2" data-parents="elte" data-open>
+                <span class="commit-node"></span>
+                <div class="timeline-content">
+                    <div class="commit-refs">
+                        <span class="ref">internship/morgan-stanley</span>
+                    </div>
+                    <div class="timeline-date">Feb 2026 - Present</div>
                     <h3 class="timeline-title">Morgan Stanley Internship</h3>
                     <p class="timeline-desc">Internship in the Java Platform Engineering and Application Infrastructure team, working on integrating AI into company systems.</p>
                 </div>
             </div>
 
-            <div class="timeline-item left fade-in">
+            <div class="commit fade-in" data-id="elte" data-lane="1" data-parents="graduated" data-open>
+                <span class="commit-node"></span>
                 <div class="timeline-content">
-                    <div class="timeline-date">2024 - Present</div>
+                    <div class="commit-refs">
+                        <span class="ref">elte/software-engineering</span>
+                    </div>
+                    <div class="timeline-date">Sep 2024 - Present</div>
                     <h3 class="timeline-title">Eötvös Loránd University</h3>
                     <p class="timeline-desc">Bachelor of Science in Software Engineering. Focus on algorithms, data structures, software engineering, and computer systems.</p>
                 </div>
             </div>
-            <div class="timeline-item right fade-in">
+
+            <div class="commit commit-small fade-in" data-id="graduated" data-lane="0" data-parents="init highschool">
+                <span class="commit-node"></span>
+                <p class="commit-msg">Merge branch <span>'high-school'</span> into main <em>Jun 2024 · graduated</em></p>
+            </div>
+
+            <div class="commit fade-in" data-id="highschool" data-lane="1" data-parents="init" data-merged>
+                <span class="commit-node"></span>
                 <div class="timeline-content">
-                    <div class="timeline-date">2020 - 2024</div>
+                    <div class="commit-refs">
+                        <span class="ref ref-merged">high-school</span>
+                    </div>
+                    <div class="timeline-date">Sep 2020 - Jun 2024</div>
                     <h3 class="timeline-title">Kaposvári Táncsics Mihály Gimnázium</h3>
                     <p class="timeline-desc">Informatics Major Program. Developed foundational programming skills in Java and Python while studying advanced mathematics and computer science concepts.</p>
                 </div>
             </div>
-            
+
+            <div class="commit commit-small fade-in" data-id="init" data-lane="0" data-parents="">
+                <span class="commit-node"></span>
+                <p class="commit-msg">Initial commit <em>first IT course in primary school</em></p>
+            </div>
         </div>
     </section>
 
@@ -118,119 +156,38 @@
     <section id="skills">
         <h2 class="section-title"><span>03.</span> Skills</h2>
 
-        <div class="skills-container">
-                <!-- Version Control -->
-                <div class="skill-card fade-in">
-                    <i class="fab fa-github skill-icon"></i>
-                    <h3 class="skill-name">Version Control</h3>
-                    <p class="skill-desc">Git, GitHub workflows, branching strategies</p>
+        <div class="editor fade-in" id="skills-editor">
+            <div class="terminal-header editor-header">
+                <div class="terminal-btn red"></div>
+                <div class="terminal-btn yellow"></div>
+                <div class="terminal-btn green"></div>
+                <div class="editor-tabs">
+                    <span class="editor-tab active">Skills.java</span>
+                    <span class="editor-tab">studies.log</span>
                 </div>
-
-                <!-- Programming Languages -->
-                <div class="skill-card fade-in">
-                    <i class="fas fa-code skill-icon"></i>
-                    <h3 class="skill-name">Java</h3>
-                    <p class="skill-desc">OOP, Spring Framework, JVM ecosystem</p>
-                </div>
-
-                <div class="skill-card fade-in">
-                    <i class="fas fa-code skill-icon"></i>
-                    <h3 class="skill-name">C/C++</h3>
-                    <p class="skill-desc">System programming, memory management</p>
-                </div>
-
-                <div class="skill-card fade-in">
-                    <i class="fas fa-code skill-icon"></i>
-                    <h3 class="skill-name">C#</h3>
-                    <p class="skill-desc">OOP, .NET ecosystem</p>
-                </div>
-
-                <div class="skill-card fade-in">
-                    <i class="fab fa-python skill-icon"></i>
-                    <h3 class="skill-name">Python</h3>
-                    <p class="skill-desc">Scripting, data analysis</p>
-                </div>
-
-                <div class="skill-card fade-in">
-                    <i class="fas fa-code skill-icon"></i>
-                    <h3 class="skill-name">Haskell</h3>
-                    <p class="skill-desc">Functional programming concepts</p>
-                </div>
-
-                <!-- Web Development -->
-                <div class="skill-card fade-in">
-                    <i class="fab fa-html5 skill-icon"></i>
-                    <h3 class="skill-name">HTML/CSS</h3>
-                    <p class="skill-desc">Semantic markup, responsive design</p>
-                </div>
-
-                <div class="skill-card fade-in">
-                    <i class="fab fa-js skill-icon"></i>
-                    <h3 class="skill-name">JavaScript</h3>
-                    <p class="skill-desc">ES6+, DOM manipulation, async programming</p>
-                </div>
-
-                <div class="skill-card fade-in">
-                    <i class="fas fa-code skill-icon"></i>
-                    <h3 class="skill-name">Bootstrap</h3>
-                    <p class="skill-desc">Rapid UI development, responsive grids</p>
-                </div>
-
-                <div class="skill-card fade-in">
-                    <i class="fab fa-node-js skill-icon"></i>
-                    <h3 class="skill-name">Node.js</h3>
-                    <p class="skill-desc">Backend development, Express.js</p>
-                </div>
-
-                <div class="skill-card fade-in">
-                    <i class="fas fa-network-wired skill-icon"></i>
-                    <h3 class="skill-name">REST APIs</h3>
-                    <p class="skill-desc">API design, HTTP protocols</p>
-                </div>
-
-                <!-- Databases -->
-                <div class="skill-card fade-in">
-                    <i class="fas fa-database skill-icon"></i>
-                    <h3 class="skill-name">SQL</h3>
-                    <p class="skill-desc">Relational databases, query optimization</p>
-                </div>
-
-                <div class="skill-card fade-in">
-                    <i class="fas fa-database skill-icon"></i>
-                    <h3 class="skill-name">MongoDB</h3>
-                    <p class="skill-desc">NoSQL, document storage, aggregation</p>
-                </div>
-
-                <!-- DevOps -->
-                <div class="skill-card fade-in">
-                    <i class="fab fa-windows skill-icon"></i>
-                    <h3 class="skill-name">PowerShell</h3>
-                    <p class="skill-desc">Windows automation, scripting</p>
-                </div>
-
-                <div class="skill-card fade-in">
-                    <i class="fas fa-terminal skill-icon"></i>
-                    <h3 class="skill-name">Bash</h3>
-                    <p class="skill-desc">Linux shell scripting, automation</p>
-                </div>
-
-                <div class="skill-card fade-in">
-                    <i class="fas fa-server skill-icon"></i>
-                    <h3 class="skill-name">DigitalOcean</h3>
-                    <p class="skill-desc">Cloud infrastructure, droplets</p>
-                </div>
-
-                <div class="skill-card fade-in">
-                    <i class="fas fa-server skill-icon"></i>
-                    <h3 class="skill-name">Apache/Nginx</h3>
-                    <p class="skill-desc">Web server configuration</p>
-                </div>
-
-                <div class="skill-card fade-in">
-                    <i class="fab fa-docker skill-icon"></i>
-                    <h3 class="skill-name">Docker</h3>
-                    <p class="skill-desc">Containerization, deployment</p>
-                </div>
+            </div>
+            <div class="editor-body">
+                    <div class="code-line" style="--i: 0"><span class="code-ln">1</span><span class="code-text"><span class="tok-comment">// Skills.java — what I work with every day</span></span></div>
+                    <div class="code-line" style="--i: 1"><span class="code-ln">2</span><span class="code-text"><span class="tok-kw">public class</span> <span class="tok-type">Skills</span> {</span></div>
+                    <div class="code-line" style="--i: 2"><span class="code-ln">3</span><span class="code-text"></span></div>
+                    <div class="code-line" style="--i: 3"><span class="code-ln">4</span><span class="code-text">    <span class="tok-annot">@Strengths</span></span></div>
+                    <div class="code-line" style="--i: 4"><span class="code-ln">5</span><span class="code-text code-kv"><span class="code-key">    <span class="tok-type">String[]</span> <span class="tok-prop">java</span>   = </span><span class="code-value">{<span class="tok-str">"Java"</span>, <span class="tok-str">"Spring Boot"</span>, <span class="tok-str">"Gradle"</span>, <span class="tok-str">"JUnit"</span>, <span class="tok-str">"REST APIs"</span>};</span></span></div>
+                    <div class="code-line" style="--i: 5"><span class="code-ln">6</span><span class="code-text code-kv"><span class="code-key">    <span class="tok-type">String[]</span> <span class="tok-prop">git</span>    = </span><span class="code-value">{<span class="tok-str">"Git"</span>, <span class="tok-str">"GitHub"</span>, <span class="tok-str">"branching strategies"</span>};</span></span></div>
+                    <div class="code-line" style="--i: 6"><span class="code-ln">7</span><span class="code-text code-kv"><span class="code-key">    <span class="tok-type">String[]</span> <span class="tok-prop">devops</span> = </span><span class="code-value">{<span class="tok-str">"Docker"</span>, <span class="tok-str">"Linux"</span>, <span class="tok-str">"Bash"</span>, <span class="tok-str">"PowerShell"</span>};</span></span></div>
+                    <div class="code-line" style="--i: 7"><span class="code-ln">8</span><span class="code-text code-kv"><span class="code-key">    <span class="tok-type">String[]</span> <span class="tok-prop">cicd</span>   = </span><span class="code-value">{<span class="tok-str">"Jenkins"</span>, <span class="tok-str">"build pipelines"</span>, <span class="tok-str">"automation"</span>};</span></span></div>
+                    <div class="code-line" style="--i: 8"><span class="code-ln">9</span><span class="code-text code-kv"><span class="code-key">    <span class="tok-type">String[]</span> <span class="tok-prop">cloud</span>  = </span><span class="code-value">{<span class="tok-str">"DigitalOcean"</span>, <span class="tok-str">"Nginx"</span>, <span class="tok-str">"Apache"</span>};</span></span></div>
+                    <div class="code-line" style="--i: 9"><span class="code-ln">10</span><span class="code-text"></span></div>
+                    <div class="code-line" style="--i: 10"><span class="code-ln">11</span><span class="code-text">    <span class="tok-comment">// also comfortable with</span></span></div>
+                    <div class="code-line" style="--i: 11"><span class="code-ln">12</span><span class="code-text code-kv"><span class="code-key">    <span class="tok-type">String[]</span> <span class="tok-prop">other</span>  = </span><span class="code-value">{<span class="tok-str dim">"Python"</span>, <span class="tok-str dim">"C/C++"</span>, <span class="tok-str dim">"C#"</span>, <span class="tok-str dim">"JavaScript"</span>, <span class="tok-str dim">"Node.js"</span>, <span class="tok-str dim">"SQL"</span>, <span class="tok-str dim">"MongoDB"</span>, <span class="tok-str dim">"Haskell"</span>};</span></span></div>
+                    <div class="code-line" style="--i: 12"><span class="code-ln">13</span><span class="code-text">}</span></div>
+            </div>
+            <div class="editor-status">
+                <span><i class="fas fa-code-branch"></i> main</span>
+                <span class="editor-status-right">
+                    <span id="editor-cursor">Ln 1, Col 1</span>
+                    <span>UTF-8</span>
+                    <span>Java</span>
+                </span>
             </div>
         </div>
     </section>
@@ -253,13 +210,69 @@
                         <span class="tech-tag">REST</span>
                     </div>
                     <div class="project-links">
-                        <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i> Live Demo</a>
                         <a href="https://github.com/daavid-codes/Gallery" class="project-link"><i class="fab fa-github"></i> Source</a>
                     </div>
                 </div>
             </div>
 
-           
+            <div class="project-card fade-in">
+                <div class="project-img">
+                    <i class="fas fa-code-branch"></i>
+                </div>
+                <div class="project-content">
+                    <h3 class="project-title">Open Source Contributions</h3>
+                    <p class="project-desc">Contributing to open-source software for portable music players. Y2Reborn is a native music player for the Innioasis Y2 running Y2Linux, written in Rust with FFmpeg decoding, GPU-accelerated OpenGL ES rendering, Bluetooth audio and a SQLite library. I also contribute to Rockbox, the open-source firmware for digital audio players.</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Rust</span>
+                        <span class="tech-tag">C</span>
+                        <span class="tech-tag">FFmpeg</span>
+                        <span class="tech-tag">Embedded Linux</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/daavid-codes/Y2Reborn" class="project-link" target="_blank" rel="noopener"><i class="fab fa-github"></i> Y2Reborn</a>
+                        <a href="https://www.rockbox.org" class="project-link" target="_blank" rel="noopener"><i class="fas fa-external-link-alt"></i> Rockbox</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card fade-in">
+                <div class="project-img">
+                    <i class="fas fa-server"></i>
+                </div>
+                <div class="project-content">
+                    <h3 class="project-title">Self-Hosted Homelab</h3>
+                    <p class="project-desc">Running my own self-hosted alternatives to cloud services: Immich for photo and video backup, Jellyfin for media streaming, and this website. Everything is deployed, configured and maintained by me, from the containers to the web server.</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Docker</span>
+                        <span class="tech-tag">Linux</span>
+                        <span class="tech-tag">Nginx</span>
+                        <span class="tech-tag">Immich</span>
+                        <span class="tech-tag">Jellyfin</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://daavid.dev" class="project-link"><i class="fas fa-external-link-alt"></i> You're here</a>
+                        <a href="https://github.com/daavid-codes/daavid.dev" class="project-link" target="_blank" rel="noopener"><i class="fab fa-github"></i> Website source</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card fade-in">
+                <div class="project-img">
+                    <i class="fas fa-puzzle-piece"></i>
+                </div>
+                <div class="project-content">
+                    <h3 class="project-title">Obsidian Plugins</h3>
+                    <p class="project-desc">Developing my own Obsidian plugins that automate and streamline my everyday workflow, so notes, tasks and planning stay in one place and I stay productive.</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">TypeScript</span>
+                        <span class="tech-tag">Obsidian API</span>
+                        <span class="tech-tag">Productivity</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/daavid-codes" class="project-link" target="_blank" rel="noopener"><i class="fab fa-github"></i> GitHub</a>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -293,24 +306,27 @@
                     </div>
                 </div>
             </div>
-            <form class="contact-form fade-in">
+            <form class="contact-form fade-in" id="contact-form" novalidate>
                 <div class="form-group">
-                    <input type="text" class="form-input" id="name" placeholder=" " required>
+                    <input type="text" class="form-input" id="name" name="name" placeholder=" " autocomplete="name" required>
                     <label for="name" class="form-label">Name</label>
                 </div>
                 <div class="form-group">
-                    <input type="email" class="form-input" id="email" placeholder=" " required>
+                    <input type="email" class="form-input" id="email" name="email" placeholder=" " autocomplete="email" required>
                     <label for="email" class="form-label">Email</label>
                 </div>
                 <div class="form-group">
-                    <input type="text" class="form-input" id="subject" placeholder=" ">
+                    <input type="text" class="form-input" id="subject" name="subject" placeholder=" ">
                     <label for="subject" class="form-label">Subject</label>
                 </div>
                 <div class="form-group">
-                    <textarea class="form-input" id="message" placeholder=" " required></textarea>
+                    <textarea class="form-input" id="message" name="message" placeholder=" " required></textarea>
                     <label for="message" class="form-label">Message</label>
                 </div>
+                <!-- spam trap: real visitors never see or fill this -->
+                <input type="checkbox" name="botcheck" class="form-honeypot" tabindex="-1" autocomplete="off" aria-hidden="true">
                 <button type="submit" class="btn submit-btn">Send Message</button>
+                <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
             </form>
         </div>
     </section>

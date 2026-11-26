@@ -230,6 +230,10 @@
             gap: 3rem;
         }
 
+        .about-container .editor {
+            align-self: center;
+        }
+
         .about-text {
             font-size: 1.1rem;
             line-height: 1.7;
@@ -237,14 +241,10 @@
 
         .about-text p {
             margin-bottom: 1.5rem;
+            text-align: justify;
+            hyphens: auto; /* avoids wide gaps between words on narrow screens */
         }
 
-        .terminal {
-            background-color: #011627;
-            border-radius: 8px;
-            box-shadow: 0 10px 30px -10px rgba(1, 22, 39, 0.5);
-            overflow: hidden;
-        }
 
         .terminal-header {
             height: 30px;
@@ -273,17 +273,7 @@
             background-color: #27c93f;
         }
 
-        .terminal-body {
-            padding: 1.5rem;
-            font-family: 'Fira Code', monospace;
-            font-size: 0.9rem;
-            line-height: 1.8;
-        }
 
-        .terminal-line {
-            margin-bottom: 0.5rem;
-            display: flex;
-        }
 
         .terminal-prompt {
             color: var(--electric-blue);
@@ -304,57 +294,135 @@
             50% { opacity: 0; }
         }
 
-        /* Studies Section */
-        .timeline {
+        /* Studies Section: git branch graph */
+        .git-cmd {
+            font-family: 'Fira Code', monospace;
+            font-size: 0.9rem;
+            color: var(--slate);
+            max-width: 800px;
+            width: 100%;
+            margin: -1.5rem auto 1.5rem;
+        }
+
+        .git-graph {
+            --lane: 32px;
+            --lanes: 4;
             position: relative;
             max-width: 800px;
+            width: 100%;
             margin: 0 auto;
         }
 
-        .timeline::after {
-            content: '';
+        .git-lines {
             position: absolute;
-            width: 2px;
-            background-color: var(--slate);
-            top: 0;
-            bottom: 0;
-            left: 50%;
-            margin-left: -1px;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            overflow: visible;
+            pointer-events: none;
         }
 
-        .timeline-item {
-            padding: 10px 40px;
+        .git-lines path {
+            fill: none;
+            stroke-width: 2;
+            stroke-linecap: round;
+        }
+
+        .git-lines .halo {
+            stroke: var(--deep-navy);
+            stroke-width: 8;
+        }
+
+        .git-lines .open {
+            stroke-dasharray: 4 6;
+        }
+
+        .commit {
             position: relative;
-            width: 50%;
-            box-sizing: border-box;
+            padding: 10px 0 10px calc(var(--lane) * var(--lanes) + 1.25rem);
         }
 
-        .timeline-item::after {
-            content: '';
+        .commit-node {
             position: absolute;
-            width: 20px;
-            height: 20px;
-            background-color: var(--deep-navy);
-            border: 2px solid var(--electric-blue);
+            top: 2.15rem;
+            left: calc(var(--lane) * var(--lane-i, 0) + var(--lane) / 2);
+            width: 16px;
+            height: 16px;
+            margin: -8px 0 0 -8px;
             border-radius: 50%;
-            top: 15px;
+            background-color: var(--deep-navy);
+            border: 2px solid var(--node-color, var(--electric-blue));
             z-index: 1;
+            transition: var(--transition);
         }
 
-        .left {
-            left: 0;
+        .commit[data-lane="0"] { --lane-i: 0; --node-color: var(--slate); }
+        .commit[data-lane="1"] { --lane-i: 1; }
+        .commit[data-lane="2"] { --lane-i: 2; }
+        .commit[data-lane="3"] { --lane-i: 3; }
+        .commit[data-merged] { --node-color: var(--light-slate); }
+
+        .commit:hover .commit-node {
+            background-color: var(--node-color, var(--electric-blue));
+            box-shadow: 0 0 12px var(--node-color, var(--electric-blue));
         }
 
-        .right {
-            left: 50%;
+        .commit-small {
+            padding-top: 0;
+            padding-bottom: 0;
         }
 
-        .left::after {
-            right: -10px;
+        .commit-small .commit-node {
+            top: 50%;
+            width: 12px;
+            height: 12px;
+            margin: -6px 0 0 -6px;
         }
 
-        .right::after {
-            left: -10px;
+        .commit-msg {
+            font-family: 'Fira Code', monospace;
+            font-size: 0.85rem;
+            color: var(--slate);
+            padding: 1.1rem 0;
+        }
+
+        .commit-msg span {
+            color: var(--light-slate);
+        }
+
+        .commit-msg em {
+            font-style: normal;
+            opacity: 0.6;
+            margin-left: 0.5rem;
+            white-space: nowrap;
+        }
+
+        .commit-refs {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem;
+            margin-bottom: 0.6rem;
+        }
+
+        .ref {
+            font-family: 'Fira Code', monospace;
+            font-size: 0.75rem;
+            color: var(--electric-blue);
+            border: 1px solid rgba(100, 255, 218, 0.4);
+            border-radius: 2em;
+            padding: 0.05rem 0.6rem;
+            white-space: nowrap;
+        }
+
+        .ref-head {
+            background-color: var(--electric-blue);
+            color: var(--deep-navy);
+            font-weight: 600;
+        }
+
+        .ref-merged {
+            color: var(--light-slate);
+            border-color: rgba(168, 178, 209, 0.4);
         }
 
         .timeline-content {
@@ -393,51 +461,197 @@
             background-color: var(--dark-blue);
         }
 
-        .skills-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-            gap: 2rem;
-        }
-
-        .skill-card {
-            background-color: var(--deep-navy);
+        .editor {
+            max-width: 860px;
+            width: 100%;
+            margin: 0 auto;
+            background-color: #011627;
             border-radius: 8px;
-            padding: 1.5rem;
-            text-align: center;
-            transition: var(--transition);
-            border: 1px solid rgba(100, 255, 218, 0.1);
+            box-shadow: 0 10px 30px -10px rgba(1, 22, 39, 0.7);
+            border: 1px solid rgba(100, 255, 218, 0.08);
+            overflow: hidden;
         }
 
-        .skill-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px -10px rgba(100, 255, 218, 0.3);
-            border-color: var(--electric-blue);
+        .editor-header {
+            height: 38px;
         }
 
-        .skill-icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
+        .editor-tabs {
+            display: flex;
+            align-self: flex-end;
+            margin-left: 1rem;
+            min-width: 0;
+        }
+
+        .editor-tab {
+            font-family: 'Fira Code', monospace;
+            font-size: 0.8rem;
+            color: var(--slate);
+            padding: 0.45rem 1rem;
+            border-radius: 6px 6px 0 0;
+            white-space: nowrap;
+        }
+
+        .editor-tab.active {
+            background-color: #011627;
+            color: var(--light-blue);
+            box-shadow: inset 0 2px 0 var(--electric-blue);
+        }
+
+        .editor-body {
+            padding: 1rem 0;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.9rem;
+            line-height: 1.9;
+            color: #d6deeb;
+        }
+
+        .code-line {
+            display: flex;
+            padding-right: 1.5rem;
+            cursor: text;
+            opacity: 0;
+            transform: translateX(-8px);
+            transition: opacity 0.35s ease, transform 0.35s ease, background-color 0.15s;
+            transition-delay: calc(var(--i) * 70ms), calc(var(--i) * 70ms), 0s;
+        }
+
+        .editor.typed .code-line {
+            opacity: 1;
+            transform: none;
+        }
+
+        .code-line:hover {
+            background-color: rgba(100, 255, 218, 0.03);
+        }
+
+        .code-line.active {
+            background-color: rgba(100, 255, 218, 0.07);
+        }
+
+        .code-ln {
+            flex: 0 0 3.25rem;
+            text-align: right;
+            padding-right: 1.25rem;
+            color: #4b6479;
+            user-select: none;
+        }
+
+        .code-line.active .code-ln {
+            color: var(--light-blue);
+        }
+
+        .code-text {
+            white-space: pre;
+            min-width: 0;
+        }
+
+        /* let long arrays wrap, aligned after the key */
+        .code-kv {
+            display: flex;
+        }
+
+        .code-key {
+            white-space: pre;
+        }
+
+        .code-value {
+            white-space: normal;
+            min-width: 0;
+        }
+
+        /* terminal variant of the editor window (About section) */
+        .term-line {
+            padding-left: 1.5rem;
+            cursor: default;
+        }
+
+        .term-line .code-text {
+            white-space: pre-wrap;
+        }
+
+        .term-sym {
+            color: var(--light-blue);
+        }
+
+        .term-out {
+            color: var(--light-slate);
+        }
+
+        .term-line .terminal-cursor {
+            width: 0.6em;
+            height: 1.1em;
+            vertical-align: text-bottom;
+        }
+
+        .tok-comment {
+            color: #637777;
+            font-style: italic;
+        }
+
+        .tok-kw {
+            color: #c792ea;
+        }
+
+        .tok-type {
+            color: #ffcb8b;
+        }
+
+        .tok-annot {
+            color: #82aaff;
+        }
+
+        .tok-prop {
             color: var(--electric-blue);
         }
 
-        .skill-name {
-            font-size: 1.1rem;
-            color: var(--light-blue);
-            margin-bottom: 0.5rem;
+        .tok-str {
+            color: #ecc48d;
+            white-space: nowrap;
+            border-radius: 3px;
+            transition: var(--transition);
         }
 
-    
+        .tok-str.dim {
+            opacity: 0.6;
+        }
 
-        .skill-card:hover .skill-desc {
+        .tok-str:hover {
             opacity: 1;
-            height: auto;
+            color: var(--deep-navy);
+            background-color: #ecc48d;
+            box-shadow: 0 0 12px rgba(236, 196, 141, 0.5);
+        }
+
+        .editor-status {
+            display: flex;
+            justify-content: space-between;
+            gap: 1rem;
+            padding: 0.3rem 1rem;
+            background-color: #1d3b53;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.75rem;
+            color: var(--light-slate);
+        }
+
+        .editor-status i {
+            color: var(--electric-blue);
+            margin-right: 0.3rem;
+        }
+
+        .editor-status-right {
+            display: flex;
+            gap: 1.25rem;
         }
 
         /* Projects Section */
         .projects-container {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            grid-template-columns: repeat(2, 1fr);
             gap: 2rem;
+            max-width: 1100px;
+            width: 100%;
+            margin: 0 auto;
         }
 
         .project-card {
@@ -474,7 +688,7 @@
 
 
         .project-img {
-            height: 200px;
+            height: 150px;
             background-color: #011627;
             display: flex;
             align-items: center;
@@ -640,6 +854,30 @@
             align-self: flex-start;
         }
 
+        .submit-btn:disabled {
+            opacity: 0.6;
+            cursor: wait;
+        }
+
+        .form-honeypot {
+            display: none;
+        }
+
+        .form-status {
+            font-family: 'Fira Code', monospace;
+            font-size: 0.85rem;
+            min-height: 1.4em;
+            color: var(--slate);
+        }
+
+        .form-status.success {
+            color: var(--electric-blue);
+        }
+
+        .form-status.error {
+            color: #ff6b81;
+        }
+
         /* Footer */
         footer {
             padding: 2rem 10%;
@@ -726,31 +964,23 @@
                 grid-template-columns: 1fr;
             }
 
-            .timeline::after {
-                left: 31px;
-            }
-
-            .timeline-item {
-                width: 100%;
-                padding-left: 70px;
-                padding-right: 25px;
-            }
-
-            .timeline-item::after {
-                left: 21px;
-            }
-
-            .left::after,
-            .right::after {
-                left: 21px;
-            }
-
-            .right {
-                left: 0;
-            }
         }
 
         @media (max-width: 768px) {
+            .git-graph {
+                --lane: 22px;
+            }
+
+            .commit {
+                padding-left: calc(var(--lane) * var(--lanes) + 0.75rem);
+            }
+
+            .commit-msg em {
+                display: block;
+                margin-left: 0;
+                white-space: normal;
+            }
+
             .navbar {
                 padding: 1rem 5%;
             }
@@ -795,8 +1025,45 @@
                 font-size: 1.5rem;
             }
 
-            .skills-container {
-                grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            .editor-body {
+                font-size: 0.78rem;
+            }
+
+            .code-ln {
+                flex-basis: 2.25rem;
+                padding-right: 0.75rem;
+            }
+
+            .code-line {
+                padding-right: 0.75rem;
+            }
+
+            .term-line {
+                padding-left: 0.75rem;
+            }
+
+            /* justified text leaves big gaps in a narrow phone column */
+            .about-text p {
+                text-align: left;
+            }
+
+            .code-text {
+                white-space: pre-wrap;
+            }
+
+            /* phones: put each array on its own indented line under its name */
+            .code-kv {
+                flex-wrap: wrap;
+            }
+
+            .code-value {
+                flex-basis: 100%;
+                padding-left: 8ch;
+            }
+
+            .editor-tab:not(.active),
+            .editor-status-right span:not(:first-child) {
+                display: none;
             }
 
             .projects-container {
