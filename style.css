@@ -718,6 +718,30 @@
             align-self: flex-start;
         }
 
+        .submit-btn:disabled {
+            opacity: 0.6;
+            cursor: wait;
+        }
+
+        .form-honeypot {
+            display: none;
+        }
+
+        .form-status {
+            font-family: 'Fira Code', monospace;
+            font-size: 0.85rem;
+            min-height: 1.4em;
+            color: var(--slate);
+        }
+
+        .form-status.success {
+            color: var(--electric-blue);
+        }
+
+        .form-status.error {
+            color: #ff6b81;
+        }
+
         /* Footer */
         footer {
             padding: 2rem 10%;

@@ -165,3 +165,64 @@
         window.addEventListener('resize', drawGitGraph);
         if (document.fonts) document.fonts.ready.then(drawGitGraph);
         drawGitGraph();
+
+        // Contact form: delivered by Web3Forms (https://web3forms.com).
+        // The access key is meant to be public; it only lets this form email the inbox it was created for.
+        const WEB3FORMS_ACCESS_KEY = 'YOUR_WEB3FORMS_ACCESS_KEY';
+        const contactForm = document.getElementById('contact-form');
+
+        if (contactForm) {
+            const status = document.getElementById('form-status');
+            const button = contactForm.querySelector('.submit-btn');
+            const setStatus = (text, type = '') => {
+                status.textContent = text;
+                status.className = 'form-status ' + type;
+            };
+
+            contactForm.addEventListener('submit', async (e) => {
+                e.preventDefault();
+
+                if (!contactForm.checkValidity()) {
+                    const invalid = contactForm.querySelector(':invalid');
+                    setStatus(invalid.type === 'email' && invalid.value
+                        ? '> Please enter a valid email address.'
+                        : '> Please fill in your name, email and message.', 'error');
+                    invalid.focus();
+                    return;
+                }
+
+                const data = Object.fromEntries(new FormData(contactForm));
+                const payload = {
+                    access_key: WEB3FORMS_ACCESS_KEY,
+                    from_name: 'daavid.dev contact form',
+                    name: data.name,
+                    email: data.email,
+                    subject: data.subject ? `daavid.dev: ${data.subject}` : `daavid.dev: message from ${data.name}`,
+                    message: data.message,
+                    botcheck: !!data.botcheck
+                };
+
+                button.disabled = true;
+                button.textContent = 'Sending...';
+                setStatus('');
+
+                try {
+                    const res = await fetch('https://api.web3forms.com/submit', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+                        body: JSON.stringify(payload)
+                    });
+                    const result = await res.json().catch(() => ({}));
+                    if (!res.ok || !result.success) throw new Error(result.message || res.statusText);
+
+                    contactForm.reset();
+                    setStatus("> Message sent. I'll get back to you soon!", 'success');
+                } catch (err) {
+                    console.error('Contact form failed:', err);
+                    setStatus('> Something went wrong. Please email me directly at david@daavid.dev.', 'error');
+                } finally {
+                    button.disabled = false;
+                    button.textContent = 'Send Message';
+                }
+            });
+        }
