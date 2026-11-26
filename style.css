@@ -579,7 +579,11 @@
             color: #c792ea;
         }
 
-        .tok-var {
+        .tok-type {
+            color: #ffcb8b;
+        }
+
+        .tok-annot {
             color: #82aaff;
         }
 
@@ -594,7 +598,12 @@
             transition: var(--transition);
         }
 
+        .tok-str.dim {
+            opacity: 0.6;
+        }
+
         .tok-str:hover {
+            opacity: 1;
             color: var(--deep-navy);
             background-color: #ecc48d;
             box-shadow: 0 0 12px rgba(236, 196, 141, 0.5);
@@ -1010,6 +1019,20 @@
 
             .code-line {
                 padding-right: 0.75rem;
+            }
+
+            .code-text {
+                white-space: pre-wrap;
+            }
+
+            /* phones: put each array on its own indented line under its name */
+            .code-kv {
+                flex-wrap: wrap;
+            }
+
+            .code-value {
+                flex-basis: 100%;
+                padding-left: 8ch;
             }
 
             .editor-tab:not(.active),
