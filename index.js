@@ -227,19 +227,23 @@
             });
         }
 
-        // Skills: "type in" the editor when it scrolls into view, click a line to move the cursor
+        // Editor/terminal windows "type in" their lines when they scroll into view
+        const typeObserver = new IntersectionObserver((entries, obs) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('typed');
+                    obs.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.25 });
+        document.querySelectorAll('.editor').forEach(el => typeObserver.observe(el));
+
+        // Skills: click a line to move the cursor
         const editor = document.getElementById('skills-editor');
 
         if (editor) {
             const cursor = document.getElementById('editor-cursor');
             const lines = [...editor.querySelectorAll('.code-line')];
-
-            new IntersectionObserver((entries, obs) => {
-                if (entries[0].isIntersecting) {
-                    editor.classList.add('typed');
-                    obs.disconnect();
-                }
-            }, { threshold: 0.25 }).observe(editor);
 
             lines.forEach((line, i) => {
                 line.addEventListener('click', () => {

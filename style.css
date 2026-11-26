@@ -230,6 +230,10 @@
             gap: 3rem;
         }
 
+        .about-container .editor {
+            align-self: center;
+        }
+
         .about-text {
             font-size: 1.1rem;
             line-height: 1.7;
@@ -239,12 +243,6 @@
             margin-bottom: 1.5rem;
         }
 
-        .terminal {
-            background-color: #011627;
-            border-radius: 8px;
-            box-shadow: 0 10px 30px -10px rgba(1, 22, 39, 0.5);
-            overflow: hidden;
-        }
 
         .terminal-header {
             height: 30px;
@@ -273,17 +271,7 @@
             background-color: #27c93f;
         }
 
-        .terminal-body {
-            padding: 1.5rem;
-            font-family: 'Fira Code', monospace;
-            font-size: 0.9rem;
-            line-height: 1.8;
-        }
 
-        .terminal-line {
-            margin-bottom: 0.5rem;
-            display: flex;
-        }
 
         .terminal-prompt {
             color: var(--electric-blue);
@@ -568,6 +556,30 @@
         .code-value {
             white-space: normal;
             min-width: 0;
+        }
+
+        /* terminal variant of the editor window (About section) */
+        .term-line {
+            padding-left: 1.5rem;
+            cursor: default;
+        }
+
+        .term-line .code-text {
+            white-space: pre-wrap;
+        }
+
+        .term-sym {
+            color: var(--light-blue);
+        }
+
+        .term-out {
+            color: var(--light-slate);
+        }
+
+        .term-line .terminal-cursor {
+            width: 0.6em;
+            height: 1.1em;
+            vertical-align: text-bottom;
         }
 
         .tok-comment {
@@ -1022,6 +1034,10 @@
 
             .code-line {
                 padding-right: 0.75rem;
+            }
+
+            .term-line {
+                padding-left: 0.75rem;
             }
 
             .code-text {
